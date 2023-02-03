@@ -6,7 +6,8 @@
             "name": "Mohammed Abdulkadir",
             "email": "moak321@gmail.com"
         }
-    ],
+    ],  
+    
     "require": {
         "guzzlehttp/guzzle": "dev-master"
     }

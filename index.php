@@ -1,44 +1,20 @@
-<?php
 
-echo "<h1> Trying out post requestss</h1>";
-/* API URL */
-$url = 'https://httpbin.org/anything';
+<pre><?php
+////
+require __DIR__."/vendor/autoload.php";
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, true);
+$client = new GuzzleHttp\Client();
 
-$headers = [
-    'Content-Type:application/json',
-    'App-Key: 123456',
-    'Sentence_id: 123456',
-    'user_id: 123456',
-    'App-Secret: 123456MM',
-    'Source: Telegram Bot'];
+$url = "https://dev.voice.mozit.cloud/api/v1/en/clips?count=1";
 
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+$response = $client -> request("GET",$url);
 
-$data_array = [
-    'isValid'=> true ,       // 
-    'challenge' => 'Some Value'
-    ];
-$data = http_build_query($data_array);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+var_dump((string)$response ->getBody("sentence"));
 
+//require 'vendor/autoload.php';//";
+//
+//$log = new Monolog\Logger('name');
+//$log->pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::WARNING));
+//$log->warning('Foo');
 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-/* execute request */
-$result = curl_exec($ch);
-
-if ($e = curl_error($ch)) {
-    echo $e;
-} else {
-    echo "<pre>";
-    print_r(json_decode($result));
-    echo "</pre>";
-}
-
-
-/* close cURL resource */
-curl_close($ch);
+echo "hello world";//?></pre>

@@ -1,7 +1,7 @@
 <?php
 
 include_once 'constants.php';
-//Haa
+//Haaaa
 // Database functions
 require_once 'functions/database/db_connection.php';
 //require_once 'functions/database/write_response.php';
