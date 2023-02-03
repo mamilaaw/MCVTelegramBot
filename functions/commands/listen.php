@@ -1,5 +1,6 @@
 <?php
 
+
 function listen($update) {
     $userid = $update->message->chat->id;
     if (get_status($userid)){
@@ -16,17 +17,17 @@ function listen($update) {
     $update->post_fields[0]->reply_markup = json_encode(array(
         'inline_keyboard' => $keyboard,
     ));
-    $url = "https://commonvoice.mozilla.org/api/v1/en/clips?count=2";
+    $url = "https://commonvoice.mozilla.org/api/v1/en/clips?count=1";
             
     $json = file_get_contents($url);
     
    $dec= json_decode($json);
     
    $update->post_fields[0]-> voice = $dec[0]->audioSrc;//"https://download.samplelib.com/mp3/sample-3s.mp3";
-   $update->post_fields[0]-> caption = $dec[0]->sentence->text;//$dec[0]->sentence->text." ";//. $dec[0]->audioSrc;
+   $update->post_fields[0]-> caption = $dec[0]->sentence->text. "\n Voice Id: ". $dec[0]->id
+           ."\n Sentence Id: ".$dec[0]->sentence->id;//$dec[0]->sentence->text." ";//. $dec[0]->audioSrc;
    
-   
-   
+ 
   
     
     ///

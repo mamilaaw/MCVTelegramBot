@@ -1,12 +1,7 @@
 <?php
 
-// PHP example of a simple bot that spits a user's message back.
-//new start//
-// Include functions
-//
 include_once 'constants.php';
-
-
+//Haa
 // Database functions
 require_once 'functions/database/db_connection.php';
 //require_once 'functions/database/write_response.php';
@@ -15,6 +10,7 @@ require_once 'functions/database/get_status.php';
 
 
 //general cmds
+include_once 'functions/commands/route_command.php';
 include_once 'functions/commands/start.php';
 include_once 'functions/commands/speak.php';
 include_once 'functions/commands/listen.php';
@@ -28,7 +24,8 @@ include_once 'functions/stateless_text.php';
 
 //include_once 'functions/validations/validation.php';
 
-include_once 'functions/callbacks/perform_callback.php';
+//  To route all the requested call backs
+include_once 'functions/callbacks/route_callback.php';
 
 include_once 'functions/route_request.php';
 include_once 'functions/send_response.php';
