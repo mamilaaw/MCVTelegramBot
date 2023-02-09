@@ -7,7 +7,8 @@ require_once 'functions/database/db_connection.php';
 //require_once 'functions/database/write_response.php';
 require_once 'functions/database/set_status.php';
 require_once 'functions/database/get_status.php';
-
+ 
+require __DIR__ . "/vendor/autoload.php";
 
 //general cmds
 include_once 'functions/commands/route_command.php';

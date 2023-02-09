@@ -1,20 +1,42 @@
 
 <pre><?php
 ////
-require __DIR__."/vendor/autoload.php";
+    require __DIR__ . "/vendor/autoload.php";
 
-$client = new GuzzleHttp\Client();
+    $client = new GuzzleHttp\Client();
 
-$url = "https://dev.voice.mozit.cloud/api/v1/en/clips?count=1";
+    $url = "https://dev.voice.mozit.cloud/api/v1/en/clips?count=1";
 
-$response = $client -> request("GET",$url);
+    $response = $client->request("GET", $url);
 
-var_dump((string)$response ->getBody("sentence"));
+//print_r($response->getHeader("ETag")[0]);
 
+    $data = json_decode($response->getBody()->getContents(), true)[0];
+    
+    $sentence = $data["sentence"]["text"];
+    $sentence_id = $data["sentence"]["id"];
+    $voice_id = $data["id"];
+    $audioSrc = $data["audioSrc"];
+    
+    echo $sentence ." ". $audioSrc;
+    ?>
+<audio controls>
+    <source src=<?php echo $audioSrc;?> type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<?php
 //require 'vendor/autoload.php';//";
 //
 //$log = new Monolog\Logger('name');
 //$log->pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::WARNING));
 //$log->warning('Foo');
 
-echo "hello world";//?></pre>
+
+    echo "\n";
+    echo $response->getStatusCode(); // 200
+    echo $response->getReasonPhrase(); // OK
+    echo $response->getProtocolVersion(); // 1.1
+//e$response->getBody();
+    echo "hello world"; //
+    ?></pre>
