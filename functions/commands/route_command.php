@@ -10,11 +10,11 @@ $update->parameters = array();
                 start($update);
                 break;
             case ('/speak'):
-                speak($update);
+                speak($update->message->chat->id);
                 break;
            
             case ('/listen'):
-                listen($update);
+                listen($update->message->chat->id);
                 break;
             case ('/help'):
                 help($update);

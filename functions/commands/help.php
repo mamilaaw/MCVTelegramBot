@@ -12,7 +12,7 @@ function help($update) {
 
     $keyboard = [
         [
-            ['text' => 'Why common voice? ', 'callback_data' => 'why_MCV'],
+            ['text' => 'Why common voice? ', 'callback_data' => 'Why'],
         ],
         [
             ['text' => 'Visit the web app...', 'url' => 'https://commonvoice.mozilla.org/']

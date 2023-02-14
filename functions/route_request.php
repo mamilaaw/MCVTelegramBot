@@ -9,15 +9,15 @@ function send_error_message($update, $text) {
 
 ///
 function route_request($update) {
-    $user_id = $update->message->chat->id;
-    if ($user_id !== ADMIN_ID) {
+    $user_id = isset($update->message->chat->id) ? $update->message->chat->id : $update->callback_query->from->id;
+    if (!in_array($user_id,ADMIN_ID)) { //in_array("Irix", $os)
         $update->method[0] = 'sendMessage';
-        $update->post_fields[0]->chat_id = $update->message->chat->id;
+        $update->post_fields[0]->chat_id = $user_id;
         $update->post_fields[0]->text = 'Not launched yet! Please contact @supereveot for more info.';
         return;
     }
     if (isset($update->callback_query)) {
-        if (get_status($user_id)) {
+        if (get_status($update->callback_query->from->id)) {
             cancel($update); //
             return;
         }
