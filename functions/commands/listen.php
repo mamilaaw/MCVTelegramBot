@@ -14,7 +14,7 @@ function listen($user_id) {//
     $voice_id = $data["id"];
     $audioSrc = $data["audioSrc"];
 
-    if (get_status($user_id)) {
+    if (db_status::get_status($user_id)) {
         cancel($update);
         return;
     }

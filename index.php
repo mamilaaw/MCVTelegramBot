@@ -8,17 +8,15 @@
     $url = "https://dev.voice.mozit.cloud/api/v1/en/clips?count=1";
 
     $response = $client->request("GET", $url);
-
-//print_r($response->getHeader("ETag")[0]);
-
-    $data = json_decode($response->getBody()->getContents(), true)[0];
     
-    $sentence = $data["sentence"]["text"];
-    $sentence_id = $data["sentence"]["id"];
-    $voice_id = $data["id"];
-    $audioSrc = $data["audioSrc"];
+    include './functions/database/db_connection.php';
     
-    echo $sentence ." ". $audioSrc;
+    include './functions/database/db_user.php';
+    //
+//  
+$user = new db_user();
+$res= $user->new_user(22233);
+print_r(db_user::get_user(22233));
     ?>
 <audio controls>
     <source src=<?php echo $audioSrc;?> type="audio/mpeg">

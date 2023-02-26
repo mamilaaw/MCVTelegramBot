@@ -20,7 +20,7 @@ function route_callback($update) {
             // do a callback processor here;
             done_callback($update);
             send_response($update);
-            listen($user_id);
+            listen($update);
             break;
          case (bool)preg_match( '/[2-3]+_[0-9A-Za-z]+/i', $data) :
             $update->post_fields[0]->text = 'Speak is also working'.$update->callback_query->data;

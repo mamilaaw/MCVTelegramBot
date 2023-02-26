@@ -1,12 +1,11 @@
 <?php
 
 include_once 'constants.php';
-//Haaaa
-// Database functions
+// Database functions/
 require_once 'functions/database/db_connection.php';
-//require_once 'functions/database/write_response.php';
-require_once 'functions/database/set_status.php';
-require_once 'functions/database/get_status.php';
+require_once 'functions/database/db_status.php';
+
+
 // 
 require __DIR__ . "/vendor/autoload.php";
 
@@ -18,7 +17,6 @@ include_once 'functions/commands/listen.php';
 include_once 'functions/commands/help.php';
 include_once 'functions/commands/cancel.php';
 
-include_once 'functions/commands/unstructured_cmd.php';
 
 //recommend moving it to a more general place
 include_once 'functions/stateless_text.php'; 

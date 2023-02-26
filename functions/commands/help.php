@@ -1,13 +1,13 @@
      <?php
 //
 function help($update) {
-    $userid = $update->message->chat->id;
-    if (get_status($userid)){
+    $user_id = $update->message->chat->id;
+    if (db_status::get_status($user_id)){
         cancel($update);
         return;
     }
     $update->method[0] = 'sendMessage';
-    $update->post_fields[0]->chat_id = $update->message->chat->id;
+    $update->post_fields[0]->chat_id = $user_id;
     $update->post_fields[0]->text = "Voice is natural, voice is human. That’s why we’re excited about creating usable voice technology for our machines.But to create voice systems, developers need an extremely large amount of voice data. Most of the data used by large companies isn’t available to the majority of people. We think that stifles innovation. So we’ve launched Common Voice, a project to help make voice recognition open and accessible to everyone.";
 
     $keyboard = [
