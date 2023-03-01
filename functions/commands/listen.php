@@ -13,7 +13,7 @@ function listen($user_id) {//
     $sentence_id = $data["sentence"]["id"];
     $voice_id = $data["id"];
     $audioSrc = $data["audioSrc"];
-
+  
     if (db_status::get_status($user_id)) {
         cancel($update);
         return;

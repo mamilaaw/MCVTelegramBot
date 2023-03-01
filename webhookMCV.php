@@ -5,7 +5,7 @@ include_once 'constants.php';
 require_once 'functions/database/db_connection.php';
 require_once 'functions/database/db_status.php';
 
-
+//okay
 // 
 require __DIR__ . "/vendor/autoload.php";
 
@@ -17,7 +17,8 @@ include_once 'functions/commands/listen.php';
 include_once 'functions/commands/help.php';
 include_once 'functions/commands/cancel.php';
 
-
+// Voice and Voice handlers
+include_once 'functions/voices/route_voice.php';
 //recommend moving it to a more general place
 include_once 'functions/stateless_text.php'; 
 

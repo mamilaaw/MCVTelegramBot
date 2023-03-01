@@ -3,27 +3,35 @@
 ////
     require __DIR__ . "/vendor/autoload.php";
 
+    $sentence_id = "000001bd08fb03e61166197ff69755e4c0c064ae71b021355eb3807eae9f363";
+    $authorization = "Basic " . "NDIyYjlmOTgtMWNlZS00ZWFlLWI0ZDItNTYzM2MxNWFjNDQyOjZjZTczM2U1ZGJkNjgyZDViOWU2ZTQ5MmRjNjAxYWY3NWI3ZDMxYzQ=";
+    $full_file_path= "https://api.telegram.org/file/bot5769796666:AAG1yHG4ujMTgV19OqPpacWMc6_6NNRB6VA/voice/file_35.oga";
     $client = new GuzzleHttp\Client();
+// Prepare Request
+    $request = $client->request('POST', 'https://dev.voice.mozit.cloud/en/speak');
+    $client->post();
+// Send Request
+    $response = $client->send($request, [
+        'headers' => [
+            'Content-Type' => 'audio/ogg; codecs=opus',
+            'sentence_id' => $sentence_id,
+            'source' => 'telegram',
+            'Authorization' => $authorization,
+            'data-binary' => $full_file_path,
+        ],
+    ]);
 
-    $url = "https://dev.voice.mozit.cloud/api/v1/en/clips?count=1";
-
-    $response = $client->request("GET", $url);
+// Read Response
+    $response_body = (string) $response->getBody();
     
-    include './functions/database/db_connection.php';
-    
-    include './functions/database/db_user.php';
-    //
-//  
-$user = new db_user();
-$res= $user->new_user(22233);
-print_r(db_user::get_user(22233));
+    var_dump($response_body);
     ?>
 <audio controls>
-    <source src=<?php echo $audioSrc;?> type="audio/mpeg">
+    <source src=<?php echo $audioSrc; ?> type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 
-<?php
+        <?php
 //require 'vendor/autoload.php';//";
 //
 //$log = new Monolog\Logger('name');
